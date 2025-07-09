@@ -22,6 +22,10 @@ export default function DynamicPageRouter({ pageId }: DynamicPageRouterProps) {
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
+  const isDevMode =
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("dev") === "true"
+
   useEffect(() => {
     const loadPage = () => {
       const pages: Page[] = JSON.parse(localStorage.getItem("adminPages") || "[]")
@@ -32,7 +36,7 @@ export default function DynamicPageRouter({ pageId }: DynamicPageRouterProps) {
       } else {
         // If page not found, redirect to first available page or performance dashboard
         if (pages.length > 0) {
-          router.push(`/page/${pages[0].id}`)
+          router.push(`/page/${pages[0].id}${isDevMode ? "?dev=true" : ""}`)
         } else {
           router.push("/dashboard/performance")
         }
@@ -42,6 +46,35 @@ export default function DynamicPageRouter({ pageId }: DynamicPageRouterProps) {
 
     loadPage()
   }, [pageId, router])
+
+  const updateEmbedUrl = () => {
+    const newUrl = prompt("Masukkan embed URL baru:", page?.embedUrl || "")
+    if (!newUrl || !page) return
+
+    const updatedPage = { ...page, embedUrl: newUrl }
+    setPage(updatedPage)
+
+    const pages: Page[] = JSON.parse(localStorage.getItem("adminPages") || "[]")
+    const updatedPages = pages.map((p) => (p.id === page.id ? updatedPage : p))
+    localStorage.setItem("adminPages", JSON.stringify(updatedPages))
+  }
+
+  const deletePage = () => {
+    if (!page) return
+
+    const confirmDelete = confirm(`Hapus halaman "${page.title}"?`)
+    if (!confirmDelete) return
+
+    const pages: Page[] = JSON.parse(localStorage.getItem("adminPages") || "[]")
+    const remainingPages = pages.filter((p) => p.id !== page.id)
+    localStorage.setItem("adminPages", JSON.stringify(remainingPages))
+
+    if (remainingPages.length > 0) {
+      router.push(`/page/${remainingPages[0].id}?dev=true`)
+    } else {
+      router.push("/dashboard/performance")
+    }
+  }
 
   if (loading) {
     return (
@@ -64,6 +97,23 @@ export default function DynamicPageRouter({ pageId }: DynamicPageRouterProps) {
 
   return (
     <DashboardLayout title={page.title}>
+      {isDevMode && (
+        <div className="flex justify-end gap-2 mb-4">
+          <button
+            onClick={updateEmbedUrl}
+            className="bg-yellow-500 text-white px-4 py-1 rounded text-sm"
+          >
+            🖉 Edit Embed Link
+          </button>
+          <button
+            onClick={deletePage}
+            className="bg-red-600 text-white px-4 py-1 rounded text-sm"
+          >
+            ❌ Hapus Halaman
+          </button>
+        </div>
+      )}
+
       <PowerBIEmbed reportId={page.id} title={page.title} embedUrl={page.embedUrl} />
     </DashboardLayout>
   )
