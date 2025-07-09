@@ -149,7 +149,7 @@ export default function ForgotPasswordPage() {
                 name="userId"
                 value={formData.userId}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                className="w-full modern-input"
                 placeholder="Enter your username or email"
                 required
               />
@@ -162,7 +162,7 @@ export default function ForgotPasswordPage() {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                className="w-full modern-input"
                 placeholder="Enter your registered phone number"
                 required
               />
@@ -189,7 +189,7 @@ export default function ForgotPasswordPage() {
                 disabled={isLoading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full py-3 rounded-lg font-bold text-white dark-blue-gradient hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 font-bold text-white modern-gradient-button transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10">
                   {isLoading ? (
@@ -208,7 +208,12 @@ export default function ForgotPasswordPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBackToLogin}
-                className="w-full py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-semibold text-white transition-all duration-300"
+                className="w-full py-3 font-semibold text-white transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #4b5563 0%, rgba(255, 255, 255, 0.1) 100%)",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)"
+                }}
               >
                 Back to Login
               </motion.button>
@@ -257,7 +262,12 @@ export default function ForgotPasswordPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBackToLogin}
-                className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-green-500/30 transition-all duration-300"
+                className="w-full py-3 font-semibold text-white transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #10b981 0%, rgba(255, 255, 255, 0.1) 100%)",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)"
+                }}
               >
                 Go to Login
               </motion.button>
@@ -265,7 +275,12 @@ export default function ForgotPasswordPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleReset}
-                className="w-full py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-semibold text-white transition-all duration-300"
+                className="w-full py-3 font-semibold text-white transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #4b5563 0%, rgba(255, 255, 255, 0.1) 100%)",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)"
+                }}
               >
                 Recover Another Account
               </motion.button>

@@ -7,6 +7,8 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
   }
 
   .dark-blue-gradient {
@@ -16,6 +18,93 @@
   .dark-blue-gradient:hover {
     background: linear-gradient(135deg, #1a2a37 0%, #2a4a53 50%, #3c6374 100%);
     box-shadow: 0 8px 25px rgba(44, 83, 100, 0.3);
+  }
+
+  .modern-gradient-button {
+    background: linear-gradient(135deg, #0f2027 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 12px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .modern-gradient-button:hover {
+    background: linear-gradient(135deg, #203a43 0%, rgba(255, 255, 255, 0.15) 100%);
+    box-shadow: 0 8px 25px rgba(44, 83, 100, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .modern-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .modern-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #00f5ff;
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+    outline: none;
+  }
+
+  .modern-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .modern-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .modern-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .modern-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .modern-select:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #00f5ff;
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+    outline: none;
+  }
+
+  .modern-textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: white;
+    resize: vertical;
+    transition: all 0.3s ease;
+  }
+
+  .modern-textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #00f5ff;
+    box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.1);
+    outline: none;
+  }
+
+  .modern-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .animated-bg {

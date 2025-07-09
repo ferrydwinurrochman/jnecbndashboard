@@ -118,7 +118,7 @@ export default function ManagePages() {
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                  className="w-full modern-input"
                   placeholder="Enter page title"
                   required
                 />
@@ -129,7 +129,7 @@ export default function ManagePages() {
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                  className="w-full modern-textarea"
                   placeholder="Enter page description"
                   rows={3}
                   required
@@ -142,7 +142,7 @@ export default function ManagePages() {
                   type="url"
                   value={formData.embedUrl}
                   onChange={(e) => setFormData({ ...formData, embedUrl: e.target.value })}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                  className="w-full modern-input"
                   placeholder="Enter Power BI embed URL"
                   required
                 />
@@ -153,7 +153,12 @@ export default function ManagePages() {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
+                  className="px-6 py-3 font-semibold transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #10b981 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   {editingPage ? "Update Page" : "Add Page"}
                 </motion.button>
@@ -162,7 +167,12 @@ export default function ManagePages() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={resetForm}
-                  className="px-6 py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-semibold transition-all duration-300"
+                  className="px-6 py-3 font-semibold transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #4b5563 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   Cancel
                 </motion.button>
@@ -180,7 +190,7 @@ export default function ManagePages() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className="glass-morphism rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-blue/20 transition-all duration-300"
+            className="modern-card"
           >
             <h3 className="text-lg font-bold text-white mb-2">{page.title}</h3>
             <p className="text-gray-400 text-sm mb-4 line-clamp-3">{page.description}</p>
@@ -191,7 +201,12 @@ export default function ManagePages() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleEdit(page)}
-                className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
+                className="flex-1 px-3 py-2 text-sm font-medium transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #3b82f6 0%, rgba(255, 255, 255, 0.1) 100%)",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)"
+                }}
               >
                 Edit
               </motion.button>
@@ -199,7 +214,12 @@ export default function ManagePages() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleDelete(page.id)}
-                className="flex-1 px-3 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition-colors"
+                className="flex-1 px-3 py-2 text-sm font-medium transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #ef4444 0%, rgba(255, 255, 255, 0.1) 100%)",
+                  borderRadius: "8px",
+                  border: "1px solid rgba(255, 255, 255, 0.2)"
+                }}
               >
                 Delete
               </motion.button>

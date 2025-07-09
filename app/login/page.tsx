@@ -121,7 +121,7 @@ export default function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+              className="w-full modern-input"
               placeholder="Enter your username or email"
               required
             />
@@ -133,7 +133,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+              className="w-full modern-input"
               placeholder="Enter your password"
               required
             />
@@ -160,7 +160,7 @@ export default function LoginPage() {
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-lg font-bold text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed dark-blue-gradient hover:shadow-lg hover:shadow-blue-500/30"
+              className="w-full py-3 font-bold text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed modern-gradient-button"
             >
               <span className="relative z-10">
                 {isLoading ? (
@@ -188,7 +188,7 @@ export default function LoginPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleRegister}
-              className="flex-1 py-2 px-4 rounded-lg font-bold text-white dark-blue-gradient hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+              className="flex-1 py-2 px-4 font-bold text-white modern-gradient-button transition-all duration-300"
             >
               Register
             </motion.button>
@@ -196,7 +196,12 @@ export default function LoginPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleForgotPassword}
-              className="flex-1 py-2 px-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg font-medium text-white hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300"
+              className="flex-1 py-2 px-4 font-medium text-white transition-all duration-300"
+              style={{
+                background: "linear-gradient(135deg, #f59e0b 0%, rgba(255, 255, 255, 0.1) 100%)",
+                borderRadius: "12px",
+                border: "1px solid rgba(255, 255, 255, 0.2)"
+              }}
             >
               Forgot Password
             </motion.button>
