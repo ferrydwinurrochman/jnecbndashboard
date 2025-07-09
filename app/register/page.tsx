@@ -1,3 +1,4 @@
+
 "use client"
 
 import type React from "react"
@@ -5,7 +6,6 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import AnimatedBackground from "../../components/animated-background"
 import Toast from "../../components/toast"
 
 interface PendingRegistration {
@@ -136,133 +136,154 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative">
-      <AnimatedBackground />
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+        {/* Animated particles */}
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60"
+            initial={{ 
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920), 
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080)
+            }}
+            animate={{
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080),
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        ))}
+        
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-purple-900/30" />
+      </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className="glass-morphism p-8 rounded-2xl shadow-2xl w-full max-w-md relative z-10"
+        className="relative z-10 w-full max-w-md"
       >
-        {/* Header */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-          className="text-center mb-8"
-        >
-          <div className="w-24 h-16 mx-auto mb-4 relative">
-            <Image src="/images/jne-main-logo.png" alt="JNE Express Logo" fill className="object-contain" />
-          </div>
-          <h2 className="text-2xl font-bold text-white mb-2">User Registration</h2>
-          <p className="text-gray-400 text-sm">Create your account and wait for approval</p>
-        </motion.div>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Username</label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              className="w-full modern-input"
-              placeholder="Enter your username"
-              required
-            />
-          </motion.div>
-
-          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6 }}>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              className="w-full modern-input"
-              placeholder="Enter your phone number"
-              required
-            />
-          </motion.div>
-
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.7 }}>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="w-full modern-input"
-              placeholder="Enter your password"
-              required
-            />
-          </motion.div>
-
-          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 }}>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleInputChange}
-              className="w-full modern-input"
-              placeholder="Confirm your password"
-              required
-            />
-          </motion.div>
-
-          {error && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-red-400 text-sm text-center bg-red-900/20 border border-red-500/50 rounded-lg p-3"
-            >
-              {error}
-            </motion.div>
-          )}
-
+        <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8">
+          {/* Header */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="space-y-3"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+            className="text-center mb-8"
           >
-            <motion.button
-              type="submit"
-              disabled={isLoading}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full py-3 font-bold text-white modern-gradient-button transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <span className="relative z-10">
-                {isLoading ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Submitting Request...
-                  </div>
-                ) : (
-                  "Submit Registration"
-                )}
-              </span>
-            </motion.button>
-
-            <motion.button
-              type="button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleBackToLogin}
-              className="w-full py-3 font-semibold text-white transition-all duration-300"
-              style={{
-                background: "linear-gradient(135deg, #4b5563 0%, rgba(255, 255, 255, 0.1) 100%)",
-                borderRadius: "12px",
-                border: "1px solid rgba(255, 255, 255, 0.2)"
-              }}
-            >
-              Back to Login
-            </motion.button>
+            <div className="w-24 h-16 mx-auto mb-4 relative">
+              <Image src="/images/jne-main-logo.png" alt="JNE Express Logo" fill className="object-contain" />
+            </div>
+            <h2 className="text-2xl font-bold text-white mb-2">User Registration</h2>
+            <p className="text-gray-300 text-sm">Create your account and wait for approval</p>
           </motion.div>
-        </form>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }}>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Username</label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                placeholder="Enter your username"
+                required
+              />
+            </motion.div>
+
+            <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6 }}>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Phone Number</label>
+              <input
+                type="tel"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                placeholder="Enter your phone number"
+                required
+              />
+            </motion.div>
+
+            <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.7 }}>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                placeholder="Enter your password"
+                required
+              />
+            </motion.div>
+
+            <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.8 }}>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                placeholder="Confirm your password"
+                required
+              />
+            </motion.div>
+
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-400 text-sm text-center bg-red-900/20 border border-red-500/50 rounded-lg p-3"
+              >
+                {error}
+              </motion.div>
+            )}
+
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.9 }}
+              className="space-y-3"
+            >
+              <motion.button
+                type="submit"
+                disabled={isLoading}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full py-3 font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span className="relative z-10">
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Submitting Request...
+                    </div>
+                  ) : (
+                    "Submit Registration"
+                  )}
+                </span>
+              </motion.button>
+
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleBackToLogin}
+                className="w-full py-3 font-semibold text-white bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 rounded-xl transition-all duration-300"
+              >
+                Back to Login
+              </motion.button>
+            </motion.div>
+          </form>
+        </div>
       </motion.div>
 
       {/* Toast Notification */}
