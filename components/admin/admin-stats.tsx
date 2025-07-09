@@ -73,7 +73,7 @@ export default function AdminStats() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             whileHover={{ scale: 1.05 }}
-            className="glass-morphism rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-blue/20 transition-all duration-300"
+            className="modern-card"
           >
             <div
               className={`w-12 h-12 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center mb-4`}
@@ -97,14 +97,24 @@ export default function AdminStats() {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="p-4 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-neon-blue/50 transition-all duration-300"
+            className="p-4 text-white font-semibold transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #0f2027 0%, rgba(255, 255, 255, 0.1) 100%)",
+              borderRadius: "12px",
+              border: "1px solid rgba(255, 255, 255, 0.2)"
+            }}
           >
             Add New Page
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="p-4 bg-gradient-to-r from-neon-purple to-pink-500 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-neon-purple/50 transition-all duration-300"
+            className="p-4 text-white font-semibold transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #8b5cf6 0%, rgba(255, 255, 255, 0.1) 100%)",
+              borderRadius: "12px",
+              border: "1px solid rgba(255, 255, 255, 0.2)"
+            }}
           >
             Add New User
           </motion.button>

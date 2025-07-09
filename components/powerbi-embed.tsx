@@ -157,7 +157,7 @@ export default function PowerBIEmbed({ reportId, title, embedUrl, accessToken }:
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6 }}
-      className="glass-morphism rounded-2xl p-6 shadow-2xl"
+      className="modern-card shadow-2xl"
     >
       <motion.div
         initial={{ y: -20, opacity: 0 }}

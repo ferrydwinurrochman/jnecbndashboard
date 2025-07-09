@@ -328,3 +328,5 @@ export default function EnhancedPageRenderer({ pageId, subPageId, isDeveloperMod
     </div>
   )
 }
+
+export default EnhancedPageRenderer

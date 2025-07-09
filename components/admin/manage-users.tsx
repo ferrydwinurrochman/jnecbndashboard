@@ -372,7 +372,7 @@ export default function ManageUsers() {
                   onChange={(e) =>
                     setFormData({ ...formData, role: e.target.value as "admin" | "viewer" | "developer" })
                   }
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300 text-white"
+                  className="w-full modern-select"
                   required
                 >
                   <option value="viewer">Viewer</option>
@@ -422,7 +422,12 @@ export default function ManageUsers() {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
+                  className="px-6 py-3 font-semibold transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #10b981 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   {editingUser ? "Update User" : "Add User"}
                 </motion.button>
@@ -431,7 +436,12 @@ export default function ManageUsers() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={resetForm}
-                  className="px-6 py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-semibold transition-all duration-300"
+                  className="px-6 py-3 font-semibold transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #4b5563 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   Cancel
                 </motion.button>
@@ -553,7 +563,7 @@ export default function ManageUsers() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="glass-morphism rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300"
+              className="modern-card"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-white">{user.name}</h3>
@@ -594,7 +604,12 @@ export default function ManageUsers() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleEdit(user)}
-                  className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
+                  className="flex-1 px-3 py-2 text-sm font-medium transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #3b82f6 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   Edit
                 </motion.button>
@@ -602,7 +617,12 @@ export default function ManageUsers() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleDelete(user.id)}
-                  className="flex-1 px-3 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition-colors"
+                  className="flex-1 px-3 py-2 text-sm font-medium transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(135deg, #ef4444 0%, rgba(255, 255, 255, 0.1) 100%)",
+                    borderRadius: "8px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                   disabled={user.id === "1"}
                 >
                   Delete

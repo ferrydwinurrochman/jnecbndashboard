@@ -191,11 +191,18 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => router.push("/dashboard/performance")}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`px-6 py-3 font-semibold transition-all duration-300 ${
                     pathname === "/dashboard/performance"
-                      ? "bg-gradient-to-r from-cyan-400 to-purple-500 shadow-lg"
-                      : "bg-gray-800/50 hover:bg-gray-700/50"
+                      ? "shadow-lg"
+                      : ""
                   }`}
+                  style={{
+                    background: pathname === "/dashboard/performance" 
+                      ? "linear-gradient(135deg, #0f2027 0%, rgba(255, 255, 255, 0.15) 100%)"
+                      : "linear-gradient(135deg, #374151 0%, rgba(255, 255, 255, 0.05) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   Performance Dashboard
                 </motion.button>
@@ -204,11 +211,18 @@ export default function DashboardLayout({ children, title }: DashboardLayoutProp
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => router.push("/dashboard/shipment")}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`px-6 py-3 font-semibold transition-all duration-300 ${
                     pathname === "/dashboard/shipment"
-                      ? "bg-gradient-to-r from-cyan-400 to-purple-500 shadow-lg"
-                      : "bg-gray-800/50 hover:bg-gray-700/50"
+                      ? "shadow-lg"
+                      : ""
                   }`}
+                  style={{
+                    background: pathname === "/dashboard/shipment" 
+                      ? "linear-gradient(135deg, #0f2027 0%, rgba(255, 255, 255, 0.15) 100%)"
+                      : "linear-gradient(135deg, #374151 0%, rgba(255, 255, 255, 0.05) 100%)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)"
+                  }}
                 >
                   Shipment Analysis
                 </motion.button>
