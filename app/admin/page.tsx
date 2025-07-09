@@ -8,8 +8,10 @@ import AnimatedBackground from "../../components/animated-background"
 import ManagePages from "../../components/admin/manage-pages"
 import ManageUsers from "../../components/admin/manage-users"
 import AdminStats from "../../components/admin/admin-stats"
+import EnhancedManagePages from "../../components/admin/enhanced-manage-pages"
+import EnhancedAdminStats from "../../components/admin/enhanced-admin-stats"
 
-type AdminSection = "dashboard" | "pages" | "users"
+type AdminSection = "dashboard" | "pages" | "enhanced-pages" | "users"
 
 export default function AdminDashboard() {
   const [activeSection, setActiveSection] = useState<AdminSection>("dashboard")
@@ -123,6 +125,7 @@ export default function AdminDashboard() {
               {[
                 { id: "dashboard", label: "Dashboard", icon: "🏠" },
                 { id: "pages", label: "Manage Pages", icon: "📄" },
+                { id: "enhanced-pages", label: "Enhanced Pages", icon: "🚀" },
                 { id: "users", label: "Manage Users", icon: "👥" },
               ].map((item) => (
                 <motion.button
@@ -152,6 +155,7 @@ export default function AdminDashboard() {
           >
             {activeSection === "dashboard" && <AdminStats />}
             {activeSection === "pages" && <ManagePages />}
+            {activeSection === "enhanced-pages" && <EnhancedManagePages />}
             {activeSection === "users" && <ManageUsers />}
           </motion.main>
         </div>

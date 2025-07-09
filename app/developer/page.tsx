@@ -7,8 +7,9 @@ import Image from "next/image"
 import AnimatedBackground from "../../components/animated-background"
 import DeveloperPageList from "../../components/developer/developer-page-list"
 import DeveloperStats from "../../components/developer/developer-stats"
+import EnhancedAdminStats from "../../components/admin/enhanced-admin-stats"
 
-type DeveloperSection = "dashboard" | "pages" | "templates"
+type DeveloperSection = "dashboard" | "pages" | "enhanced" | "templates"
 
 export default function DeveloperDashboard() {
   const [activeSection, setActiveSection] = useState<DeveloperSection>("dashboard")
@@ -95,6 +96,7 @@ export default function DeveloperDashboard() {
               {[
                 { id: "dashboard", label: "Dashboard", icon: "🏠" },
                 { id: "pages", label: "Edit Pages", icon: "📄" },
+                { id: "enhanced", label: "Enhanced Pages", icon: "🚀" },
                 { id: "templates", label: "Templates", icon: "🎨" },
               ].map((item) => (
                 <motion.button
@@ -134,6 +136,7 @@ export default function DeveloperDashboard() {
           >
             {activeSection === "dashboard" && <DeveloperStats />}
             {activeSection === "pages" && <DeveloperPageList onEditPage={navigateToPage} />}
+            {activeSection === "enhanced" && <EnhancedAdminStats />}
             {activeSection === "templates" && (
               <div className="glass-morphism rounded-2xl p-8 text-center">
                 <div className="text-6xl mb-4">🎨</div>
